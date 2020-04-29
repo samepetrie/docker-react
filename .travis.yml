@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sampetrie/docker-react -f Dockerfile.dev .
+
+script:
+   - docker run -e CI=true sampetrie/docker-react npm run test
